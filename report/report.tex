@@ -35,9 +35,16 @@ A linguagem escolhida para o desenvolvimento do trabalho foi \href{https://www.p
 Para organizar o ambiente de desenvolvimento, que englobava vários pacotes diferentes, foi utilizado o gerenciador de pacotes \href{https://www.anaconda.com/}{\texttt{Anaconda}}, o que facilitou o trabalho
 com os pacotes de ciência de dados citados. O projeto final foi salvo em um \href{https://github.com/lframosferreira/boosting-process}{\texttt{repositório}} no GitHub para fácil versionamento e organização de código.
 
-\section{Experimentos}
+\subsection{Classificador}
 
-Os experimento
+A implementação do classificador \textit{AdaBoost} seguiu o padrão utilizado pela biblioteca \textit{NumPy}, de modo que armazenar o classificador e todas as suas funcionalidades em um objeto permitia uma maior abstração do código e 
+facilitou seu uso. A classe em questão possui um construtor e os método de treinamento e predição.
+
+A implementação foi pensada especificamente para a classificação binária, de modo que bases de dados com mais de duas classes não irão funcionar. Como já citado, as funcionalidades das bibliotecas \textit{NumPy} e \textit{Pandas} 
+foram extensamente utilizadas durante o desenvolvimento.
+
+\subsection{Validação cruzada}
+
 
 \section{Análise dos resultados de teste}
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ ! -d "data/" ]; then
-    mkdir data;
+    mkdir data
 fi
 
 if [ ! -d "data/tictactoe" ]; then
-    mkdir data/tictactoe;
+    mkdir data/tictactoe
 fi
 
 wget -P data/tictactoe https://archive.ics.uci.edu/static/public/101/tic+tac+toe+endgame.zip

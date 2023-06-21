@@ -91,7 +91,7 @@ variando de 1 a 1000, e um gráfico que
 representa como as métricas variam conforme o número de estimadores aumenta
 pode ser gerado.
 
-Os gráficos em questão podem ser vistos abaixo:
+Os gráficos em questão estão dispostos a seguir:
 
 \begin{figure}[H]
     \centering
@@ -99,10 +99,36 @@ Os gráficos em questão podem ser vistos abaixo:
     \caption{Evolução do erro em função do número de estimadores}
 \end{figure}
 
+No gráfico acima, como citado, pode ser analisada a variação do erro de
+classificação no conjunto de
+dados \textit{Tic Tac Toe} conforme aumenta-se o número de estimadores
+utilizados. Podemos ver claramente que
+com o aumento do número de estimadores, o erro diminui, como era esperado.
+
+Ao aumentar o número de estimadores, o viés no modelo diminui e sua capacidade
+de generalização aumenta,
+permitindo assim que o erro em dados ainda não vistos seja menor. No entanto,
+podemos ver que a partir de certo número
+de estimadores (neste caso, aproximadamente 250), o erro do modelo durante a
+classificação converge
+para um valor específico, e passa a não diminuir com o aumento do número de
+estimadores.
+
+Tal situação pode ser analisada de diversar formas. Primeiramente, é necessário
+lembrar que os pesos dos estimadores
+diminuem conforme aumenta o número de estimadores utilizados. Ou seja, a partir
+de certo ponto, é natural que
+novos estimadores causem pouco impacto na classificação, já que seus pesos
+serão muito pequenos. O gráfico abaixo
+mostra a variação do peso de cada estimador para um modelo classificador da
+base \textit{Tic Tac Toe} sem validação cruzada.
+
+
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Accuracy.png}
-    \caption{Evolução da acurácia em função do número de estimadores}
+    \includegraphics[width=0.8\textwidth]{images/Estimatorweight.png}
+    \caption{Evolução do peso de cada estimador}
 \end{figure}
 
 \begin{figure}[H]

@@ -11,6 +11,7 @@
 \bibliographystyle{alpha}
 \usepackage{caption}
 \usepackage{float}
+\usepackage{csquotes}
 
 \title{Aprendizado de Máquina \\ Trabalho Prático 2}
 \author{Luís Felipe Ramos Ferreira \\ 2019022553 \\
@@ -49,7 +50,10 @@ diferentes, foi utilizado o gerenciador de pacotes
 \href{https://www.anaconda.com/}{\texttt{Anaconda}}, o que facilitou o trabalho
 com os pacotes de ciência de dados citados. O projeto final foi salvo em um
 \href{https://github.com/lframosferreira/boosting-process}{\texttt{repositório}}
-no GitHub para fácil versionamento e organização de código.
+no GitHub para fácil versionamento e organização de código. As instruções de
+como
+utilizar o que foi implementado estão descritas no arquivo \textit{README.md}
+do repositório.
 
 \subsection{Classificador}
 
@@ -71,6 +75,13 @@ ensinado nas aulas. De maneira geral,
 também foi utilizada a documentação da biblioteca
 \href{https://scikit-learn.org/stable/modules/cross_validation.html}{\texttt{Scikit-Learn}}
 para consolidar a implementação e corroborar com o conhecimento sobre o método.
+
+Em particular, a funcionalidade \textit{KFold} do \textit{Scikit-Learn} foi
+utilizada
+para realizar as separações para a validação cruzada, assim como as funções de
+cálculos de
+métricas como acurácia e \textit{F1-score} também foram retiradas da
+biblioteca.
 
 \section{Análise dos resultados de teste}
 
@@ -121,9 +132,7 @@ de certo ponto, é natural que
 novos estimadores causem pouco impacto na classificação, já que seus pesos
 serão muito pequenos. O gráfico abaixo
 mostra a variação do peso de cada estimador para um modelo classificador da
-base \textit{Tic Tac Toe} sem validação cruzada.
-
-
+base \textit{Tic Tac Toe} sem validação cruzada, e permite enxergar esse fato.
 
 \begin{figure}[H]
     \centering
@@ -131,16 +140,41 @@ base \textit{Tic Tac Toe} sem validação cruzada.
     \caption{Evolução do peso de cada estimador}
 \end{figure}
 
+Fica evidente que estimadores escolhidos \enquote{mais a frente} terão pesos
+menores, e dessa maneira
+não causarão tanto impacto no modelo final e, por isso, após certo tempo, o
+aumento do número de estimadores
+não necessariamente irá tornar o modelo mais poderoso.
+
+Na figura abaixo, pode-se ser vista a evolução da acurácia do modelo conforme o
+aumento do número de estimadores
+utilizados. Como a acurácia, neste caso, é igual a um menos o valor do erro, a
+soma desses dois valores será um e o
+gráfico permite enxergar esse fato.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/F1-Score.png}
-    \caption{Evolução do F1-Score em função do número de estimadores}
+    \includegraphics[width=0.8\textwidth]{images/Accuracy.png}
+    \caption{Evolução da acurácia em função do número de estimadores}
 \end{figure}
+
+Como já foi explicado acima, após certo número de estimadores, a performance do
+modelo não
+aumenta, uma vez que os pesos desses novos estimadores não irão impactar na
+classificação após
+certo ponto. Por isso, após aproximadamente 250 estimadores, a acurácia do
+modelo parece convergir
+para um mesmo valor constante.
 
 \section{Conclusão}
 
-Em suma, após as análises e discussões apresentadas neste relatório, fica claro
-que os parâmetros da rede neuronal, como o número de neurônios na camada
-oculta,
+Em suma, após as análises e discussões apresentadas neste relatório, fica
+evidente que o
+processo de \textit{boosting} é uma metodologia extremamente útil para diminuir
+o viés de modelos
+extremamente simples. No entanto, conforme visto, o benefício que é trago por
+ela possui limites, e seu
+uso e implementação deve ser feito de maneira inteligente para tirar o máximo
+proveita dela.
 
 \end{document}

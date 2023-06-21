@@ -21,43 +21,100 @@
 
 \section{Introdução}
 
-O Trabalho Prático 2 da disciplina de Aprendizado de Máquina teve como objetivo o desenvolvimento de um algoritmo de \textit{boosting}
-para classificação binária. Em particular, o algoritmo a ser desenvolvido é o \href{https://en.wikipedia.org/wiki/AdaBoost}{\textit{Adaboost}} e a base de dados a ser
-utilizada nos testes é o conjunto \href{https://archive.ics.uci.edu/ml/datasets/Tic-Tac-Toe+Endgame}{\textit{Tic-Tac-Toe}}. Além disso, os modelos criados deveriam
-ser analisados por meio da metodologia de validação cruzada com 5 partições para avaliação do modelo.
+O Trabalho Prático 2 da disciplina de Aprendizado de Máquina teve como objetivo
+o desenvolvimento de um algoritmo de \textit{boosting}
+para classificação binária. Em particular, o algoritmo a ser desenvolvido é o
+\href{https://en.wikipedia.org/wiki/AdaBoost}{\textit{Adaboost}} e a base de
+dados a ser
+utilizada nos testes é o conjunto
+\href{https://archive.ics.uci.edu/ml/datasets/Tic-Tac-Toe+Endgame}{\textit{Tic-Tac-Toe}}.
+Além disso, os modelos criados deveriam
+ser analisados por meio da metodologia de validação cruzada com 5 partições
+para avaliação do modelo.
 
 \section{Implementação}
 
-A linguagem escolhida para o desenvolvimento do trabalho foi \href{https://www.python.org/}{\texttt{Python}} (versão 3.10), devida a sua grande variedade de bibliotecas úteis para ciência de dados e aprendizado de máquina.
- A modelagem do algoritmo \textit{AdaBoost} foi feita com o uso dE bibliotecas de análise numérica como \href{https://numpy.org/}{\texttt{NumPy}} e \href{https://pandas.pydata.org/}{\texttt{Pandas}}, 
- uma vez que se tratam de ferramentas extremamente completas que facilitaram o desenvolvimento do algoritmo.
+A linguagem escolhida para o desenvolvimento do trabalho foi
+\href{https://www.python.org/}{\texttt{Python}} (versão 3.10), devida a sua
+grande variedade de bibliotecas úteis para ciência de dados e aprendizado de
+máquina.
+A modelagem do algoritmo \textit{AdaBoost} foi feita com o uso dE bibliotecas
+de análise numérica como \href{https://numpy.org/}{\texttt{NumPy}} e
+\href{https://pandas.pydata.org/}{\texttt{Pandas}},
+uma vez que se tratam de ferramentas extremamente completas que facilitaram o
+desenvolvimento do algoritmo.
 
-Para organizar o ambiente de desenvolvimento, que englobava vários pacotes diferentes, foi utilizado o gerenciador de pacotes \href{https://www.anaconda.com/}{\texttt{Anaconda}}, o que facilitou o trabalho
-com os pacotes de ciência de dados citados. O projeto final foi salvo em um \href{https://github.com/lframosferreira/boosting-process}{\texttt{repositório}} no GitHub para fácil versionamento e organização de código.
+Para organizar o ambiente de desenvolvimento, que englobava vários pacotes
+diferentes, foi utilizado o gerenciador de pacotes
+\href{https://www.anaconda.com/}{\texttt{Anaconda}}, o que facilitou o trabalho
+com os pacotes de ciência de dados citados. O projeto final foi salvo em um
+\href{https://github.com/lframosferreira/boosting-process}{\texttt{repositório}}
+no GitHub para fácil versionamento e organização de código.
 
 \subsection{Classificador}
 
-A implementação do classificador \textit{AdaBoost} seguiu o padrão utilizado pela biblioteca \textit{NumPy}, de modo que armazenar o classificador e todas as suas funcionalidades em um objeto permitia uma maior abstração do código e 
-facilitou seu uso. A classe em questão possui um construtor e os método de treinamento e predição.
+A implementação do classificador \textit{AdaBoost} seguiu o padrão utilizado
+pela biblioteca \textit{NumPy}, de modo que armazenar o classificador e todas
+as suas funcionalidades em um objeto permitia uma maior abstração do código e
+facilitou seu uso. A classe em questão possui um construtor e os método de
+treinamento e predição.
 
-A implementação foi pensada especificamente para a classificação binária, de modo que bases de dados com mais de duas classes não irão funcionar. Como já citado, as funcionalidades das bibliotecas \textit{NumPy} e \textit{Pandas} 
+A implementação foi pensada especificamente para a classificação binária, de
+modo que bases de dados com mais de duas classes não irão funcionar. Como já
+citado, as funcionalidades das bibliotecas \textit{NumPy} e \textit{Pandas}
 foram extensamente utilizadas durante o desenvolvimento.
 
 \subsection{Validação cruzada}
 
+A implementação da validação cruzada foi feita conforme o conteúdo teórico
+ensinado nas aulas. De maneira geral,
+também foi utilizada a documentação da biblioteca
+\href{https://scikit-learn.org/stable/modules/cross_validation.html}{\texttt{Scikit-Learn}}
+para consolidar a implementação e corroborar com o conhecimento sobre o método.
 
 \section{Análise dos resultados de teste}
 
-De maneira ger
+Conforme especificado no enunciado, foi realizada a análise do modelo de
+\textit{AdaBoost} criado com
+o uso de uma validação cruzada de 5 partições. Dessa maneira, a base inteira de
+dados \textit{Tic-Tac-Toe}
+foi dividida em 5 partes, as quais foram utilizadas para treino e validação
+iterativamente. Os resultados de métricas
+de análise para cada uma das partições foi armazenado e, ao fim dos cálculos,
+as médias foram retiradas para que um valor geral representativo
+do modelo pudesse ser gerado.
 
-\section{Convergência do erro empírico}
+De modo a compreender como a variação do número de estimadores impacta em um
+algoritmo de \textit{boosting},
+o \textit{pipeline} descrito acima foi feito para números de estimadores
+variando de 1 a 400, e um gráfico que
+representa como as métricas variam conforme o número de estimadores aumenta
+pode ser gerado.
 
-Durante o treinamento das redes neuronais propostas, o histórico do erro empírico pode ser armazenado para análise de sua convergência, considerando cada configuração de rede proposta. Para fins de simplificação, serão mostrados
-aqui
+Os gráficos em questão podem ser vistos abaixo:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Error.png}
+    \caption{Evolução do erro em função do número de estimadores}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Accuracy.png}
+    \caption{Evolução da acurácia em função do número de estimadores}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/F1-Score.png}
+    \caption{Evolução do F1-Score em função do número de estimadores}
+\end{figure}
 
 \section{Conclusão}
 
-Em suma, após as análises e discussões apresentadas neste relatório, fica claro que os parâmetros da rede neuronal, como o número de neurônios na camada oculta,
-
+Em suma, após as análises e discussões apresentadas neste relatório, fica claro
+que os parâmetros da rede neuronal, como o número de neurônios na camada
+oculta,
 
 \end{document}

@@ -36,10 +36,10 @@ para avaliação do modelo.
 \section{Implementação}
 
 A linguagem escolhida para o desenvolvimento do trabalho foi
-\href{https://www.python.org/}{\texttt{Python}} (versão 3.10), devida a sua
+\href{https://www.python.org/}{\texttt{Python}} (versão 3.11.4), devida a sua
 grande variedade de bibliotecas úteis para ciência de dados e aprendizado de
 máquina.
-A modelagem do algoritmo \textit{AdaBoost} foi feita com o uso dE bibliotecas
+A modelagem do algoritmo \textit{AdaBoost} foi feita com o uso de bibliotecas
 de análise numérica como \href{https://numpy.org/}{\texttt{NumPy}} e
 \href{https://pandas.pydata.org/}{\texttt{Pandas}},
 uma vez que se tratam de ferramentas extremamente completas que facilitaram o
@@ -58,9 +58,9 @@ do repositório.
 \subsection{Classificador}
 
 A implementação do classificador \textit{AdaBoost} seguiu o padrão utilizado
-pela biblioteca \textit{NumPy}, de modo que armazenar o classificador e todas
+pela biblioteca \textit{Scikit-Learn}, de modo que armazenar o classificador e todas
 as suas funcionalidades em um objeto permitia uma maior abstração do código e
-facilitou seu uso. A classe em questão possui um construtor e os método de
+facilitou seu uso. A classe em questão possui um construtor e os métodos de
 treinamento e predição.
 
 A implementação foi pensada especificamente para a classificação binária, de
@@ -98,7 +98,7 @@ do modelo pudesse ser gerado.
 De modo a compreender como a variação do número de estimadores impacta em um
 algoritmo de \textit{boosting},
 o \textit{pipeline} descrito acima foi feito para números de estimadores
-variando de 1 a 1000, e um gráfico que
+variando de 1 a 500, e um gráfico que
 representa como as métricas variam conforme o número de estimadores aumenta
 pode ser gerado.
 
@@ -122,8 +122,7 @@ permitindo assim que o erro em dados ainda não vistos seja menor. No entanto,
 podemos ver que a partir de certo número
 de estimadores (neste caso, aproximadamente 250), o erro do modelo durante a
 classificação converge
-para um valor específico, e passa a não diminuir com o aumento do número de
-estimadores.
+para um valor específico, e passa a não diminuir mais.
 
 Tal situação pode ser analisada de diversar formas. Primeiramente, é necessário
 lembrar que os pesos dos estimadores

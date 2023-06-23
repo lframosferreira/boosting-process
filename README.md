@@ -4,14 +4,14 @@ Trabalho Prático II da disciplina de Aprendizado de Máquina, ministrada pelo p
 
 ## Dependências
 
-O trabalho foi feito em um ambiente _Anaconda_, cujoas dependências estão salvas no arquivo _environment.yml_. Para criar um ambiente idêntico, é necessário:
+O trabalho foi feito em um ambiente _Anaconda_, cujas dependências estão salvas no arquivo _environment.yml_. Para criar um ambiente idêntico, é necessário:
 
 1. Estar no diretório raiz do projeto
 2. Usar o comando `conda env create -f environment.yml`
 
 ## Dados
 
-Para ter os dados em seu computador loca, você deve:
+Para ter os dados em seu computador local, você deve:
 
 1. Estar no diretório raiz do projeto
 2. Usar o comando `bash handle_data.sh`
